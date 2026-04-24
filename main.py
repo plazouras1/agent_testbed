@@ -9,7 +9,7 @@ from agent.agent import run_agent  # noqa: E402
 
 def main():
     print("Agent Lab — type your question, or 'quit' to exit.")
-    print("Model: gemini-2.5-flash  |  Tools: fetch_news, web_search\n")
+    print("Model: gemini-2.5-flash  |  Tools: fetch_news, web_search, fetch_url, save_note\n")
 
     # contents persists across queries so the agent remembers the conversation.
     # Each entry is a types.Content object — the full history is sent to the

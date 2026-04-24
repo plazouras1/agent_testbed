@@ -50,4 +50,46 @@ TOOLS = types.Tool(function_declarations=[
             required=["query"],
         ),
     ),
+    types.FunctionDeclaration(
+        name="fetch_url",
+        description=(
+            "Fetches a specific webpage and returns its cleaned text content. "
+            "Use this when the user provides a URL and wants you to read it — "
+            "documentation pages, API references, RFCs, blog posts, etc. "
+            "Do NOT guess or hallucinate page content; fetch it."
+        ),
+        parameters=types.Schema(
+            type=types.Type.OBJECT,
+            properties={
+                "url": types.Schema(
+                    type=types.Type.STRING,
+                    description="The full URL of the page to fetch (must start with http:// or https://).",
+                )
+            },
+            required=["url"],
+        ),
+    ),
+    types.FunctionDeclaration(
+        name="save_note",
+        description=(
+            "Saves a markdown note to the local notes/ folder. "
+            "Use this when the user asks you to save, write, or document something — "
+            "a comparison, a summary, an ADR, a brief, etc. "
+            "The title becomes the filename; content should be well-structured markdown."
+        ),
+        parameters=types.Schema(
+            type=types.Type.OBJECT,
+            properties={
+                "title": types.Schema(
+                    type=types.Type.STRING,
+                    description="Title of the note (also used as the filename). Keep it short and descriptive.",
+                ),
+                "content": types.Schema(
+                    type=types.Type.STRING,
+                    description="Full markdown content of the note.",
+                ),
+            },
+            required=["title", "content"],
+        ),
+    ),
 ])
